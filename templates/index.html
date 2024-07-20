@@ -7,15 +7,20 @@
 </head>
 <body>
     <h1>Phonebook</h1>
+    
+    <!-- دکمه Logout -->
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit">Logout</button>
+    </form>
 
-    Form for adding a new contact
+    <!-- Form for adding a new contact -->
     <h2>Add New Contact</h2>
     <form id="addContactForm">
         <label for="Name"> Name:</label>
         <input type="text" id="Name" name="name" required><br><br>
         
         <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" required pattern="[0-9]{11}" title="Phone  must be 11 digits"><br><br>
+        <input type="text" id="phone" name="phone" required pattern="[0-9]{11}" title="Phone must be 11 digits"><br><br>
         
         <label for="email">email:</label>
         <input type="text" id="email" name="email" required><br><br>
@@ -71,13 +76,13 @@
                 updateBtn.textContent = 'Update';
                 updateBtn.addEventListener('click', async () => {
                     const updatedName = prompt('Enter updated name (leave blank to keep current):', contact.name);
-                    const updatedphone = prompt('Enter updated phone (leave blank to keep current):', contact.phone);
-                    const updatedemail = prompt('Enter updated email (leave blank to keep current):', contact.email);
+                    const updatedPhone = prompt('Enter updated phone (leave blank to keep current):', contact.phone);
+                    const updatedEmail = prompt('Enter updated email (leave blank to keep current):', contact.email);
 
                     const updatedData = {
                         name: updatedName || contact.name,
-                        phone: updatedphone || contact.phone,
-                        email: updatedemail || contact.email
+                        phone: updatedPhone || contact.phone,
+                        email: updatedEmail || contact.email
                     };
 
                     const updateResponse = await fetch(`/contacts/${contact._id}`, {

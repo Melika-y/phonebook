@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="POST" action="/login">
+    <h1>Login</h1>
+    <form action="/login" method="post">
         <label for="email">Email:</label>
-        <input type="text" name="email" required>
-        <br>
+        <input type="email" id="email" name="email" required><br><br>
+        
         <label for="password">Password:</label>
-        <input type="password" name="password" required>
-        <br>
+        <input type="password" id="password" name="password" required><br><br>
+        
         <button type="submit">Login</button>
     </form>
-    <a href="{{ url_for('register') }}">Don't have an account? Register</a>
+    <p>Don't have an account? <a href="{{ url_for('register') }}">Click here to register</a></p>
 </body>
 </html>

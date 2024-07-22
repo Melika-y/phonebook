@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
 <body>
-    <h2>Register</h2>
-    <form method="POST" action="/register">
+    <h1>Register</h1>
+    <form action="/register" method="post">
         <label for="email">Email:</label>
-        <input type="text" name="email" required>
-        <br>
+        <input type="email" id="email" name="email" required><br><br>
+        
         <label for="password">Password:</label>
-        <input type="password" name="password" required>
-        <br>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="user">User</option>
+            {% if not admin_exists %}
+                <option value="admin">Admin</option>
+            {% endif %}
+        </select><br><br>
+        
         <button type="submit">Register</button>
     </form>
-    <a href="{{ url_for('user_login') }}">Already have an account? Login</a>
+    <p>Already registered? <a href="{{ url_for('user_login') }}">Click here to login</a></p>
+    {% if admin_exists %}
+        <p>An admin already exists. Only user role is available.</p>
+    {% endif %}
 </body>
 </html>
